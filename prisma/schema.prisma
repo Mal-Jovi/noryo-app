@@ -1,0 +1,52 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mysql"
+}
+
+model Patient {
+  id                 Int       @id @default(autoincrement())
+  phn                String    @unique
+  firstName          String
+  lastName           String
+  city               String
+  province           String
+  gender             Gender
+  age                Int
+  birthday           DateTime
+  familyDoctorId     Int?
+  primaryDoctorId    Int
+  lastClinicVisit    DateTime?
+  nextClinicVisit    DateTime?
+  allergies          String
+  primaryCondition   String
+  secondaryCondition String
+  createdAt          DateTime  @default(now())
+  updatedAt          DateTime  @updatedAt
+  familyDoctor       Doctor?   @relation("PatientFamilyDoctor", fields: [familyDoctorId], references: [id])
+  primaryDoctor      Doctor    @relation("PatientPrimaryDoctor", fields: [primaryDoctorId], references: [id])
+
+  @@index([phn])
+  @@index([lastClinicVisit])
+  @@index([familyDoctorId], map: "Patient_familyDoctorId_fkey")
+  @@index([primaryDoctorId], map: "Patient_primaryDoctorId_fkey")
+}
+
+model Doctor {
+  id              Int       @id @default(autoincrement())
+  firstName       String
+  lastName        String
+  licenseNum      String
+  createdAt       DateTime  @default(now())
+  familyPatients  Patient[] @relation("PatientFamilyDoctor")
+  primaryPatients Patient[] @relation("PatientPrimaryDoctor")
+}
+
+enum Gender {
+  MALE
+  FEMALE
+  OTHER
+  NOT_SPECIFIED
+}
