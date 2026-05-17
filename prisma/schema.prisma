@@ -7,8 +7,8 @@ datasource db {
 }
 
 model Patient {
-  id                 Int       @id @default(autoincrement())
-  phn                String    @unique
+  id                 Int          @id @default(autoincrement())
+  phn                String       @unique
   firstName          String
   lastName           String
   city               String
@@ -23,10 +23,11 @@ model Patient {
   allergies          String
   primaryCondition   String
   secondaryCondition String
-  createdAt          DateTime  @default(now())
-  updatedAt          DateTime  @updatedAt
-  familyDoctor       Doctor?   @relation("PatientFamilyDoctor", fields: [familyDoctorId], references: [id])
-  primaryDoctor      Doctor    @relation("PatientPrimaryDoctor", fields: [primaryDoctorId], references: [id])
+  createdAt          DateTime     @default(now())
+  updatedAt          DateTime     @updatedAt
+  familyDoctor       Doctor?      @relation("PatientFamilyDoctor", fields: [familyDoctorId], references: [id])
+  primaryDoctor      Doctor       @relation("PatientPrimaryDoctor", fields: [primaryDoctorId], references: [id])
+  medications        Medication[] @relation("PatientMedications")
 
   @@index([phn])
   @@index([lastClinicVisit])
@@ -42,6 +43,23 @@ model Doctor {
   createdAt       DateTime  @default(now())
   familyPatients  Patient[] @relation("PatientFamilyDoctor")
   primaryPatients Patient[] @relation("PatientPrimaryDoctor")
+}
+
+model Medication {
+  id                       Int      @id @default(autoincrement())
+  drugIdentificationNumber Int
+  genericName              String
+  brandName                String
+  type                     String
+  drugClass                String
+  controlledSubstance      Boolean
+  patientId                Int?
+  patient                  Patient? @relation("PatientMedications", fields: [patientId], references: [id])
+
+  @@index([drugIdentificationNumber])
+  @@index([genericName])
+  @@index([brandName])
+  @@index([patientId], map: "Medication_patientId_fkey")
 }
 
 enum Gender {
