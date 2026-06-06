@@ -10,7 +10,8 @@
     "tauri": "tauri",
     "db:generate": "prisma generate",
     "db:migrate": "prisma migrate dev --name",
-    "db:studio": "prisma studio"
+    "db:studio": "prisma studio",
+    "codegen": "graphql-codegen"
   },
   "dependencies": {
     "@apollo/server": "^5.5.1",
@@ -23,6 +24,10 @@
     "react-dom": "19.2.4"
   },
   "devDependencies": {
+    "@graphql-codegen/add": "^7.0.1",
+    "@graphql-codegen/cli": "^7.0.0",
+    "@graphql-codegen/typescript": "^6.0.1",
+    "@graphql-codegen/typescript-resolvers": "^6.0.1",
     "@tailwindcss/postcss": "^4",
     "@tauri-apps/cli": "^2.10.1",
     "@types/node": "^20",

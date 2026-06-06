@@ -1,0 +1,186 @@
+scalar DateTime
+
+# Type Definitions
+
+type Patient {
+  id: Int!
+  phn: Int!
+  firstName: String!
+  lastName: String!
+  city: String!
+  province: String!
+  gender: Gender!
+  birthday: DateTime!
+  age: Int!
+  familyDoctorId: Int
+  primaryDoctorId: Int!
+  lastClinicVisit: DateTime
+  nextClinicVisit: DateTime
+  allergies: [String!]
+  primaryCondition: [String!]
+  secondaryCondition: [String!]
+  createdAt: DateTime!
+  updatedAt: DateTime!
+  familyDoctor: Doctor
+  primaryDoctor: Doctor!
+  medications: [Medication]
+}
+
+type Doctor {
+  id: Int!
+  firstName: String!
+  lastName: String!
+  licenseNumber: Int!
+  specialty: String!
+  email: String!
+  createdAt: DateTime!
+  familyPatients: [Patient!]!
+  primaryPatients: [Patient!]!
+}
+
+type Medication {
+  id: Int!
+  drugIdentificationNumber: Int!
+  genericName: String!
+  brandName : String!
+  type: String!
+  drugClass: String!
+  controlledSubstance: Boolean!
+  patientId: Int!
+  patient: Patient!
+}
+
+enum Gender {
+  MALE
+  FEMALE
+  OTHER
+  NOT_SPECIFIED
+}
+
+# Query Definition
+
+type Query {
+  patient(
+    phn: Int
+    firstName: String
+    lastName: String
+    city: String
+    province: String
+    gender: Gender
+    birthday: DateTime
+    familyDoctorId: Int
+    primaryDoctorId: Int
+    allergies: [String]
+    primaryCondition: [String]
+    secondaryCondition: [String]
+    medicationsName: String
+  ): [Patient]
+  patients: [Patient!]!
+  doctor(
+    licenseNumber: Int
+    firstName: String
+    lastName: String
+    specialty: String
+  ): Doctor
+  doctors: [Doctor!]!
+  medication(
+    drugIdentificationNumber: Int
+    genericName: String
+    brandName: String
+    drugClass: String
+    type: String
+  ):[Medication!]!
+}
+
+# definitions for creating instances of patient, doctor, medication
+
+input CreatePatientInput {
+  phn: Int!
+  firstName: String!
+  lastName: String!
+  city: String!
+  province: String!
+  gender: Gender!
+  birthday: DateTime!
+  age: Int!
+  familyDoctorId: Int
+  primaryDoctorId: Int!
+  lastClinicVisit: DateTime
+  nextClinicVisit: DateTime
+  allergies: [String]
+  primaryCondition: [String]
+  secondaryCondition: [String]
+}
+
+input CreateDoctorInput {
+  firstName: String!
+  lastName: String!
+  licenseNumber: Int!
+  email: String!
+  specialty: String!
+}
+
+input CreateMedicationInput {
+  drugIdentificationNumber: Int!
+  genericName: String!
+  brandName: String!
+  type: String!
+  drugClass: String!
+  controlledSubstance: Boolean!
+  patientId: Int!
+}
+
+# definitions for updating instances of patient, doctor, medication
+input UpdatePatientInput {
+  phn: Int
+  firstName: String
+  lastName: String
+  city: String
+  province: String
+  gender: Gender
+  birthday: DateTime
+  age: Int
+  familyDoctorId: Int
+  primaryDoctorId: Int
+  lastClinicVisit: DateTime
+  nextClinicVisit: DateTime
+  medications: [Medication]
+  allergies: [String]
+  primaryCondition: [String]
+  secondaryCondition: [String]
+}
+
+input UpdateDoctorInput {
+  firstName: String
+  lastName: String
+  licenseNumber: Int
+  specialty: String
+  email: String
+}
+
+input UpdateMedicationInput {
+  drugIdentificationNumber: Int
+  genericName: String
+  brandName: String
+  type: String
+  drugClass: String
+  controlledSubstance: Boolean
+}
+
+type Mutation {
+  # Create, Update, Delete a patient
+  createPatient(input: CreatePatientInput!): Patient!
+  updatePatient(id: Int!, input: UpdatePatientInput!): Patient!
+  deletePatient(id: Int!): Boolean!
+
+  # Create, Update, Delete a new doctor
+  createDoctor(input: CreateDoctorInput!): Doctor!
+  updateDoctor(id: Int!, input: UpdateDoctorInput!): Doctor!
+  deleteDoctor(id: Int!): Boolean!
+
+  # Create a new medication
+  createMedication(input: CreateMedicationInput!): Medication!
+  updateMedication(id: Int!, input: UpdateMedicationInput): Medication!
+  deleteMedication(id: Int!): Boolean!
+}
+
