@@ -34,3 +34,15 @@ You can check out [the Next.js GitHub repository](https://github.com/vercel/next
 The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
 
 Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+
+## ⚠️ Licensing & Commercial Use Notice
+
+This project is **source-available** but is **NOT open-source**. 
+
+`noryo-app` is licensed under the **Creative Commons Attribution-NonCommercial-NoDerivatives 4.0 International (CC BY-NC-ND 4.0)** license. 
+
+* 🚫 **No Commercial Use:** Use of this code in any project for-profit, or within a commercial entity, is strictly prohibited.
+* 🚫 **No Commercial Modifications:** Modifying this code for deployment in any commercial or revenue-generating project is forbidden.
+* 📄 For commercial licensing inquiries or authorized commercial exceptions, please contact the repository owner.
+
+See the full [LICENSE](LICENSE) file for details.
