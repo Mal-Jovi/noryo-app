@@ -40,9 +40,12 @@ export const patientResolvers: Pick<
       });
     },
     medications: async (parentPatient, _args, context) => {
-      return await context.prisma.medication.findMany({
-        where: { patientId: parentPatient.id },
+      const patient = await context.prisma.patient.findUnique({
+        where: { id: parentPatient.id },
+        include: { medications: true },
       });
+
+      return patient?.medications || [];
     },
   },
 };

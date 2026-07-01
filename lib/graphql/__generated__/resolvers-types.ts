@@ -30,7 +30,7 @@ export type CreateMedicationInput = {
   drugClass: Scalars['String']['input'];
   drugIdentificationNumber: Scalars['Int']['input'];
   genericName: Scalars['String']['input'];
-  patientId: Scalars['Int']['input'];
+  patientIds?: InputMaybe<Array<Scalars['Int']['input']>>;
   type: Scalars['String']['input'];
 };
 
@@ -80,8 +80,7 @@ export type Medication = {
   drugIdentificationNumber: Scalars['Int']['output'];
   genericName: Scalars['String']['output'];
   id: Scalars['Int']['output'];
-  patient: Patient;
-  patientId: Scalars['Int']['output'];
+  patients?: Maybe<Array<Patient>>;
   type: Scalars['String']['output'];
 };
 
@@ -228,6 +227,7 @@ export type UpdateMedicationInput = {
   drugClass?: InputMaybe<Scalars['String']['input']>;
   drugIdentificationNumber?: InputMaybe<Scalars['Int']['input']>;
   genericName?: InputMaybe<Scalars['String']['input']>;
+  patientIds?: InputMaybe<Array<Scalars['Int']['input']>>;
   type?: InputMaybe<Scalars['String']['input']>;
 };
 
@@ -241,7 +241,7 @@ export type UpdatePatientInput = {
   gender?: InputMaybe<Gender>;
   lastClinicVisit?: InputMaybe<Scalars['DateTime']['input']>;
   lastName?: InputMaybe<Scalars['String']['input']>;
-  medications?: InputMaybe<Array<InputMaybe<Medication>>>;
+  medicationIds?: InputMaybe<Array<Scalars['Int']['input']>>;
   nextClinicVisit?: InputMaybe<Scalars['DateTime']['input']>;
   phn?: InputMaybe<Scalars['Int']['input']>;
   primaryCondition?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
@@ -384,8 +384,7 @@ export type MedicationResolvers<ContextType = GraphQLContext, ParentType extends
   drugIdentificationNumber?: Resolver<ResolversTypes['Int'], ParentType, ContextType>;
   genericName?: Resolver<ResolversTypes['String'], ParentType, ContextType>;
   id?: Resolver<ResolversTypes['Int'], ParentType, ContextType>;
-  patient?: Resolver<ResolversTypes['Patient'], ParentType, ContextType>;
-  patientId?: Resolver<ResolversTypes['Int'], ParentType, ContextType>;
+  patients?: Resolver<Maybe<Array<ResolversTypes['Patient']>>, ParentType, ContextType>;
   type?: Resolver<ResolversTypes['String'], ParentType, ContextType>;
 }>;
 

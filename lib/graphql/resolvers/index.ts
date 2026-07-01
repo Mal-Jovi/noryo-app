@@ -1,23 +1,26 @@
 import { Resolvers } from "../__generated__/resolvers-types";
 import { patientResolvers } from "./patients";
-
-//TODO: import individual resolvers here once made
+import { doctorResolvers } from "./doctors";
+import { medicationResolvers } from "./medications";
 
 export const resolvers: Resolvers = {
   Query: {
+    // spreading in Query for patients
     ...patientResolvers.Query,
-
-    patients: () => [],
-    patient: () => [],
-
-    doctors: () => [],
-    doctor: () => null,
-
-    medication: () => [],
+    // spreading in Query for doctors
+    ...doctorResolvers.Query,
+    // spreading in Query for medications
+    ...medicationResolvers.Query,
   },
   Mutation: {
-    // TODO: mutations added here
+    // spreading in patient CRUD
+    ...patientResolvers.Mutation,
+    // spreading in doctor CRUD
+    ...doctorResolvers.Mutation,
+    // spreading in medication CRUD
+    ...medicationResolvers.Mutation,
   },
 
   Patient: patientResolvers.Patient,
+  Medication: medicationResolvers.Medication,
 };

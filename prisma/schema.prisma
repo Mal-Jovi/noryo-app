@@ -39,29 +39,27 @@ model Doctor {
   id              Int       @id @default(autoincrement())
   firstName       String
   lastName        String
-  licenseNumber   Int       @unique
-  specialty       String
-  email           String
   createdAt       DateTime  @default(now())
+  licenseNumber   Int       @unique
+  email           String
+  specialty       String
   familyPatients  Patient[] @relation("PatientFamilyDoctor")
   primaryPatients Patient[] @relation("PatientPrimaryDoctor")
 }
 
 model Medication {
-  id                       Int     @id @default(autoincrement())
-  drugIdentificationNumber Int     @unique
+  drugIdentificationNumber Int       @unique
   genericName              String
   brandName                String
   type                     String
   drugClass                String
   controlledSubstance      Boolean
-  patientId                Int
-  patient                  Patient @relation("PatientMedications", fields: [patientId], references: [id])
+  id                       Int       @id @default(autoincrement())
+  patients                 Patient[] @relation("PatientMedications")
 
   @@index([drugIdentificationNumber])
   @@index([genericName])
   @@index([brandName])
-  @@index([patientId], map: "Medication_patientId_fkey")
   @@index([genericName, brandName])
 }
 
