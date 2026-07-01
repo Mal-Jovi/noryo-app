@@ -7,8 +7,8 @@ datasource db {
 }
 
 model Patient {
-  id                 Int       @id @default(autoincrement())
-  phn                String    @unique
+  id                 Int          @id @default(autoincrement())
+  phn                Int          @unique
   firstName          String
   lastName           String
   city               String
@@ -20,13 +20,14 @@ model Patient {
   primaryDoctorId    Int
   lastClinicVisit    DateTime?
   nextClinicVisit    DateTime?
-  allergies          String
-  primaryCondition   String
-  secondaryCondition String
-  createdAt          DateTime  @default(now())
-  updatedAt          DateTime  @updatedAt
-  familyDoctor       Doctor?   @relation("PatientFamilyDoctor", fields: [familyDoctorId], references: [id])
-  primaryDoctor      Doctor    @relation("PatientPrimaryDoctor", fields: [primaryDoctorId], references: [id])
+  allergies          Json
+  primaryCondition   Json
+  secondaryCondition Json
+  createdAt          DateTime     @default(now())
+  updatedAt          DateTime     @updatedAt
+  familyDoctor       Doctor?      @relation("PatientFamilyDoctor", fields: [familyDoctorId], references: [id])
+  primaryDoctor      Doctor       @relation("PatientPrimaryDoctor", fields: [primaryDoctorId], references: [id])
+  medications        Medication[] @relation("PatientMedications")
 
   @@index([phn])
   @@index([lastClinicVisit])
@@ -38,10 +39,28 @@ model Doctor {
   id              Int       @id @default(autoincrement())
   firstName       String
   lastName        String
-  licenseNum      String
   createdAt       DateTime  @default(now())
+  licenseNumber   Int       @unique
+  email           String
+  specialty       String
   familyPatients  Patient[] @relation("PatientFamilyDoctor")
   primaryPatients Patient[] @relation("PatientPrimaryDoctor")
+}
+
+model Medication {
+  drugIdentificationNumber Int       @unique
+  genericName              String
+  brandName                String
+  type                     String
+  drugClass                String
+  controlledSubstance      Boolean
+  id                       Int       @id @default(autoincrement())
+  patients                 Patient[] @relation("PatientMedications")
+
+  @@index([drugIdentificationNumber])
+  @@index([genericName])
+  @@index([brandName])
+  @@index([genericName, brandName])
 }
 
 enum Gender {

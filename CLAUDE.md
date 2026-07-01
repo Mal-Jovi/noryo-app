@@ -17,6 +17,13 @@ Before implementing:
 - If a simpler approach exists, say so. Push back when warranted.
 - If something is unclear, stop. Name what's confusing. Ask.
 
+## 1.1 Project Stack & Package Management
+
+**This project exclusively uses Bun as its package manager and runtime.**
+
+- NEVER suggest or use `npm`, `yarn`, or `pnpm`.
+- ALWAYS use `bun` or `bunx` for commands (e.g., `bun install`, `bun run build`, `bunx prisma`).
+
 ## 2. Simplicity First
 
 **Minimum code that solves the problem. Nothing speculative.**
@@ -39,6 +46,7 @@ When editing existing code:
 - Don't refactor things that aren't broken.
 - Match existing style, even if you'd do it differently.
 - If you notice unrelated dead code, mention it - don't delete it.
+- Don't run any db terminal commands without explicit approval
 
 When your changes create orphans:
 
@@ -46,27 +54,4 @@ When your changes create orphans:
 - Don't remove pre-existing dead code unless asked.
 
 The test: Every changed line should trace directly to the user's request.
-
-## 4. Goal-Driven Execution
-
-**Define success criteria. Loop until verified.**
-
-Transform tasks into verifiable goals:
-
-- "Add validation" → "Write tests for invalid inputs, then make them pass"
-- "Fix the bug" → "Write a test that reproduces it, then make it pass"
-- "Refactor X" → "Ensure tests pass before and after"
-
 For multi-step tasks, state a brief plan:
-
-```
-1. [Step] → verify: [check]
-2. [Step] → verify: [check]
-3. [Step] → verify: [check]
-```
-
-Strong success criteria let you loop independently. Weak criteria ("make it work") require constant clarification.
-
----
-
-**These guidelines are working if:** fewer unnecessary changes in diffs, fewer rewrites due to overcomplication, and clarifying questions come before implementation rather than after mistakes.
