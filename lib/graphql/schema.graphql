@@ -109,6 +109,7 @@ input CreatePatientInput {
   allergies: [String]
   primaryCondition: [String]
   secondaryCondition: [String]
+  medicationIds: [Int!]
 }
 
 input CreateDoctorInput {

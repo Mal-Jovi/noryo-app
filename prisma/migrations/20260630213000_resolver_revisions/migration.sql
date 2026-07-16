@@ -14,7 +14,7 @@ DROP INDEX `Medication_patientId_fkey` ON `Medication`;
 ALTER TABLE `Medication` DROP COLUMN `patientId`;
 
 -- CreateTable
-CREATE TABLE `_PatientMedications` (
+CREATE TABLE `009` (
     `A` INTEGER NOT NULL,
     `B` INTEGER NOT NULL,
 

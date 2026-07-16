@@ -23,4 +23,5 @@ export const resolvers: Resolvers = {
 
   Patient: patientResolvers.Patient,
   Medication: medicationResolvers.Medication,
+  Doctor: doctorResolvers.Doctor,
 };
