@@ -1,7 +1,7 @@
 /* eslint-disable */
 // @ts-nocheck
 import { GraphQLResolveInfo, GraphQLScalarType, GraphQLScalarTypeConfig } from 'graphql';
-import { Patient as PrismaPatient, Doctor as PrismaDoctor, Medication as PrismaMedication } from '@prisma/client';
+import { Patient, Doctor, Medication } from '@prisma/client';
 import { GraphQLContext } from '../context';
 export type Maybe<T> = T | null;
 export type InputMaybe<T> = Maybe<T>;
@@ -44,6 +44,7 @@ export type CreatePatientInput = {
   gender: Gender;
   lastClinicVisit?: InputMaybe<Scalars['DateTime']['input']>;
   lastName: Scalars['String']['input'];
+  medicationIds?: InputMaybe<Array<Scalars['Int']['input']>>;
   nextClinicVisit?: InputMaybe<Scalars['DateTime']['input']>;
   phn: Scalars['Int']['input'];
   primaryCondition?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
@@ -329,12 +330,12 @@ export type ResolversTypes = ResolversObject<{
   CreateMedicationInput: CreateMedicationInput;
   CreatePatientInput: CreatePatientInput;
   DateTime: ResolverTypeWrapper<Scalars['DateTime']['output']>;
-  Doctor: ResolverTypeWrapper<PrismaDoctor>;
+  Doctor: ResolverTypeWrapper<Doctor>;
   Gender: Gender;
   Int: ResolverTypeWrapper<Scalars['Int']['output']>;
-  Medication: ResolverTypeWrapper<PrismaMedication>;
+  Medication: ResolverTypeWrapper<Medication>;
   Mutation: ResolverTypeWrapper<Record<PropertyKey, never>>;
-  Patient: ResolverTypeWrapper<PrismaPatient>;
+  Patient: ResolverTypeWrapper<Patient>;
   Query: ResolverTypeWrapper<Record<PropertyKey, never>>;
   String: ResolverTypeWrapper<Scalars['String']['output']>;
   UpdateDoctorInput: UpdateDoctorInput;
@@ -349,11 +350,11 @@ export type ResolversParentTypes = ResolversObject<{
   CreateMedicationInput: CreateMedicationInput;
   CreatePatientInput: CreatePatientInput;
   DateTime: Scalars['DateTime']['output'];
-  Doctor: PrismaDoctor;
+  Doctor: Doctor;
   Int: Scalars['Int']['output'];
-  Medication: PrismaMedication;
+  Medication: Medication;
   Mutation: Record<PropertyKey, never>;
-  Patient: PrismaPatient;
+  Patient: Patient;
   Query: Record<PropertyKey, never>;
   String: Scalars['String']['output'];
   UpdateDoctorInput: UpdateDoctorInput;

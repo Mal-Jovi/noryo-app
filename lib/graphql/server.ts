@@ -1,3 +1,4 @@
+import "dotenv/config";
 import { ApolloServer } from "@apollo/server";
 import { startStandaloneServer } from "@apollo/server/standalone";
 import { resolvers } from "./resolvers/index";
@@ -19,8 +20,11 @@ const server = new ApolloServer({
   resolvers,
 });
 
-await startStandaloneServer(server, {
+const { url } = await startStandaloneServer(server, {
   listen: { port },
+  context: async ({ req }) => {
+    return await createContext();
+  },
 });
 
-console.log(`🚀 Server ready at http://localhost:${port}`);
+console.log(`🚀 Server ready at ${url}`);
