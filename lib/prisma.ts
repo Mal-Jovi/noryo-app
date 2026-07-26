@@ -27,6 +27,7 @@ const adapter = new PrismaMariaDb({
   password,
   database,
   connectionLimit: 5,
+  allowPublicKeyRetrieval: true,
 });
 
 //const adapter = new PrismaMariaDb(pool);
