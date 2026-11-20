@@ -33,13 +33,11 @@ export default function Home() {
   if (error) return <p>Error: {error.message}</p>;
 
   return (
-    <div className="pageContainer">
-      <h1 className="text-4xl font-bold mb-4">Welcome to Noryo App</h1>
-
+    <div>
       {data?.doctors.map((doctor) => (
-        <li key={doctor.id}>
+        <h1 key={doctor.id}>
           {doctor.firstName} {doctor.lastName}
-        </li>
+        </h1>
       ))}
     </div>
   );

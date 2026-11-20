@@ -3,12 +3,36 @@
 
 :root {
   --font-size-base: 20px;
+
+  /* Adobe Fonts*/
+  --font-slab: "museo-slab", serif;
+  --font-slab-rounded: "museo-slab-rounded", sans-serif;
+  --font-aquavit: "aquavit", sans-serif;
+  --font-apolline: "apolline", serif;
+  --font-dinosaur: "dinosaur", sans-serif;
+
+  /* Font Weights */
+  --fw-light: 300;
+  --fw-regular: 400;
+  --fw-medium: 500;
+  --fw-bold: 700;
 }
 
-.title {
-  @apply text-2xl italic m-5;
-}
+@layer components {
+  /* Define custom reusable component classes */
+  .btn-primary {
+    @apply px-4 py-2 bg-blue-600 text-white font-semibold rounded-lg shadow-md hover:bg-blue-700 active:scale-95 transition duration-150;
+  }
 
-.pageContainer {
-  @apply bg-green-100 w-full h-full;
+  .card-container {
+    @apply min-h-full min-w-full flex flex-col bg-[#FFEE6E] max-w-sm mx-auto p-6 text-center shadow-[inset_0_1px_1px_0_#ffffff,inset_0_-1px_2px_0_rgba(0,0,0,0.2)];
+  }
+
+  .drag-bar {
+    @apply absolute top-0 left-0 right-0 h-10 w-full z-50 cursor-default;
+  }
+
+  .title {
+    @apply italic text-4xl;
+  }
 }

@@ -11,7 +11,8 @@
     "db:generate": "prisma generate",
     "codegen": "graphql-codegen",
     "api": "bun run --hot lib/graphql/server.ts",
-    "dev:all": "bun run api & bun run dev"
+    "dev:all": "bun run api & bun run dev",
+    "dev:desktop": "bun run api & bun run tauri dev"
   },
   "dependencies": {
     "@apollo/client": "^3.12.0",
