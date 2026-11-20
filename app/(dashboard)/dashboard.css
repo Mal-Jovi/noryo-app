@@ -1,0 +1,10 @@
+.pageLayout {
+  display: flex;
+  flex-direction: row;
+  align-items: stretch;
+  flex: 1;
+  min-height: 0;
+  width: 100%;
+  overflow: hidden;
+  padding-top: 10px;
+}
