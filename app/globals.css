@@ -16,6 +16,29 @@
   --fw-regular: 400;
   --fw-medium: 500;
   --fw-bold: 700;
+
+  /* Tab theme colors */
+  --color-tab-doctors: #a5caff;
+  --color-tab-patients: #c8ffbd;
+  --color-tab-medications: #fef3c7;
+  --color-tab-schedules: #ffa8a8;
+
+  /* Active color (overridden per route/tab) */
+  [data-tab="doctors"] {
+    --active-tab-color: var(--color-tab-doctors);
+  }
+
+  [data-tab="patients"] {
+    --active-tab-color: var(--color-tab-patients);
+  }
+
+  [data-tab="medications"] {
+    --active-tab-color: var(--color-tab-medications);
+  }
+
+  [data-tab="schedules"] {
+    --active-tab-color: var(--color-tab-schedules);
+  }
 }
 
 @layer components {
@@ -25,7 +48,8 @@
   }
 
   .card-container {
-    @apply min-h-full min-w-full flex flex-col bg-[#FFEE6E] max-w-sm mx-auto p-6 text-center shadow-[inset_0_1px_1px_0_#ffffff,inset_0_-1px_2px_0_rgba(0,0,0,0.2)];
+    /*@apply min-h-full min-w-full flex flex-col bg-[#FFEE6E] max-w-sm mx-auto p-6 text-center shadow-[inset_0_1px_1px_0_#ffffff,inset_0_-1px_2px_0_rgba(0,0,0,0.2)];*/
+    @apply min-h-full min-w-full flex flex-col bg-linear-to-b from-[#FFEE6E] via-[#FFEE6E]/60 to-white/20 backdrop-blur-md max-w-sm mx-auto p-6 text-center shadow-[inset_0_1px_1px_0_#ffffff,inset_0_-1px_2px_0_rgba(0,0,0,0.2)];
   }
 
   .drag-bar {

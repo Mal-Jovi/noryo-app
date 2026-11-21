@@ -34,9 +34,6 @@ export default function RootLayout({
       <body className="card-container">
         <div data-tauri-drag-region className="drag-bar">
           {/* Optional: Title or leave blank for traffic lights space */}
-          <span className="text-xs text-gray-500 pointer-events-none">
-            Noryo
-          </span>
         </div>
         <ApolloClientProvider>{children}</ApolloClientProvider>
       </body>

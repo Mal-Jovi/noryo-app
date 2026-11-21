@@ -35,9 +35,7 @@ export default function Home() {
   return (
     <div>
       {data?.doctors.map((doctor) => (
-        <h1 key={doctor.id}>
-          {doctor.firstName} {doctor.lastName}
-        </h1>
+        <h1 key={doctor.id}></h1>
       ))}
     </div>
   );

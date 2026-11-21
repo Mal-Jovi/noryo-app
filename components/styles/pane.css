@@ -1,8 +1,8 @@
 /* components/pane.css */
 
 .navigation-pane {
-  width: 25%;
-  max-width: 300px;
+  width: 20%;
+  max-width: 250px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -12,10 +12,12 @@
   border-bottom-left-radius: 10px;
 
   h1 {
-    font-family: var(--font-dinosaur);
+    font-family: "aquavit", sans-serif;
     font-size: 2rem;
-    font-weight: var(--fw-bold);
-    margin: 1rem 0;
+    font-weight: 400;
+    font-style: normal;
+    margin-top: 0.5rem;
+    margin-bottom: 3rem;
   }
 }
 
@@ -32,7 +34,7 @@
 .page-pane-content {
   flex: 1;
   width: 100%;
-  background-color: #e3e3e3;
+  background-color: var(--active-tab-color);
 
   border-top-left-radius: 25px;
   border-top-right-radius: 10px;
@@ -45,4 +47,19 @@
   background-color: #f6f6f6;
 
   border-top-right-radius: 10px;
+}
+
+.dashboard-footer {
+  position: absolute;
+  padding-right: 1rem;
+  bottom: 0;
+  right: 0;
+
+  h5 {
+    font-family: "the-henston", sans-serif;
+    font-weight: 300;
+    font-style: normal;
+    font-size: 1rem;
+    opacity: 0.65;
+  }
 }
