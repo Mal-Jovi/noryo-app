@@ -1,11 +1,33 @@
+"use client";
+
+import { useState } from "react";
 import { SearchBar } from "./SearchBar";
-import "./pane.css";
+import { NavigationTab } from "./NavigationTab";
+import "./styles/pane.css";
 
 export const NavigationPane = () => {
-  /*add navigation buttons under the searchbar*/
+  const [activeTab, setActiveTab] = useState("Doctors");
+
+  const Tabs = [
+    { label: "Doctors", href: "/doctors" },
+    { label: "Patients", href: "/patients" },
+    { label: "Medications", href: "/medications" },
+    { label: "Schedules", href: "/schedules" },
+  ];
+
   return (
     <nav className="navigation-pane">
       <h1>Noryo</h1>
+
+      {Tabs.map((tab) => (
+        <NavigationTab
+          key={tab.href}
+          label={tab.label}
+          href={tab.href}
+          isActive={activeTab === tab.label}
+          setActiveTab={setActiveTab}
+        />
+      ))}
     </nav>
   );
 };

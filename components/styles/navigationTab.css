@@ -1,0 +1,20 @@
+.navigation-tab {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  padding-left: 2rem;
+  height: 50px;
+  width: 100%;
+  /*background-color: #f0f0f0;*/
+  /*border-bottom: 1px solid #ccc;*/
+
+  h3 {
+    font-family: "aquavit", sans-serif;
+    font-weight: 300;
+    font-style: normal;
+  }
+}
+
+.navigation-tab.active {
+  background-color: var(--active-tab-color);
+}

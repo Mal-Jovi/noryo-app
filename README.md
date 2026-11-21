@@ -1,24 +1,20 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# noryo-app
 
-## Getting Started
+`noryo-app` is a healthcare management application for organizing and managing patients, doctors, appointments, medications, and schedules. It is built to run both in the browser and as a desktop application.
 
-First, run the development server:
+## Tech Stack
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+### Frontend
+- **Next.js & React**: App Router-based UI built with React and TypeScript.
+- **Tailwind CSS**: Utility-first styling.
+- **Apollo Client**: GraphQL client for fetching and caching data.
+- **Tauri**: Desktop application wrapper.
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
-
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
-
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+### Backend
+- **Bun**: JavaScript/TypeScript runtime and package manager.
+- **Apollo Server & GraphQL**: GraphQL API server with TypeScript code generation (`graphql-codegen`).
+- **Prisma**: Database ORM and schema migrations.
+- **MariaDB**: Relational database.
 
 
 ## ⚠️ Licensing & Commercial Use Notice
