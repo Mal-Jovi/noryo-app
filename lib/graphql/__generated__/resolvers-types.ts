@@ -1,7 +1,7 @@
 /* eslint-disable */
 // @ts-nocheck
 import { GraphQLResolveInfo, GraphQLScalarType, GraphQLScalarTypeConfig } from 'graphql';
-import { Patient, Doctor, Medication } from '@prisma/client';
+import { Patient, Doctor, Medication } from '../../generated/prisma';
 import { GraphQLContext } from '../context';
 export type Maybe<T> = T | null;
 export type InputMaybe<T> = Maybe<T>;

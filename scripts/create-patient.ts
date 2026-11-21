@@ -1,6 +1,6 @@
 import "dotenv/config";
 import { prisma } from "../lib/prisma";
-import { Gender } from "@prisma/client";
+import { Gender } from "../lib/generated/prisma";
 
 async function main() {
   console.log("Inserting a new patient...");

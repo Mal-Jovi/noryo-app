@@ -1,8 +1,9 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
-import "./globals.css";
 import { ApolloClientProvider } from "./api/ApolloClientProvider";
+import { Geist, Geist_Mono } from "next/font/google";
+import { WindowControls } from "../components/WindowControls";
 
+import "./globals.css";
 const geistSans = Geist({
   variable: "--font-geist-sans",
   subsets: ["latin"],
@@ -33,7 +34,7 @@ export default function RootLayout({
       </head>
       <body className="card-container">
         <div data-tauri-drag-region className="drag-bar">
-          {/* Optional: Title or leave blank for traffic lights space */}
+          <WindowControls />
         </div>
         <ApolloClientProvider>{children}</ApolloClientProvider>
       </body>

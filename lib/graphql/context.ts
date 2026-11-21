@@ -1,4 +1,4 @@
-import { PrismaClient } from "@prisma/client";
+import { PrismaClient } from "../generated/prisma";
 import { prisma } from "../prisma"; // Import your central Prisma client!
 
 export interface GraphQLContext {

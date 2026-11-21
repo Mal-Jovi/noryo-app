@@ -1,5 +1,5 @@
 import { Resolvers } from "../__generated__/resolvers-types";
-import { Prisma } from "@prisma/client";
+import { Prisma } from "../../generated/prisma";
 
 export const medicationResolvers: Pick<
   Resolvers,
