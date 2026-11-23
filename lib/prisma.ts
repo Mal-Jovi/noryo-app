@@ -1,6 +1,5 @@
 import "dotenv/config";
 import { PrismaMariaDb } from "@prisma/adapter-mariadb";
-import mariadb from "mariadb";
 // Import from the custom generated client output folder
 import { PrismaClient } from "./generated/prisma";
 

@@ -7,7 +7,7 @@ async function main() {
 
   const patient = await prisma.patient.create({
     data: {
-      phn: 987654321, // Personal Health Number (must be unique)
+      phn: "987654321", // Personal Health Number (must be unique)
       firstName: "Jovi",
       lastName: "Sidhu",
       city: "Vancouver",

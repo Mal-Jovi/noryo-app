@@ -20,7 +20,7 @@ export type CreateDoctorInput = {
   email: Scalars['String']['input'];
   firstName: Scalars['String']['input'];
   lastName: Scalars['String']['input'];
-  licenseNumber: Scalars['Int']['input'];
+  licenseNumber: Scalars['String']['input'];
   specialty: Scalars['String']['input'];
 };
 
@@ -28,7 +28,7 @@ export type CreateMedicationInput = {
   brandName: Scalars['String']['input'];
   controlledSubstance: Scalars['Boolean']['input'];
   drugClass: Scalars['String']['input'];
-  drugIdentificationNumber: Scalars['Int']['input'];
+  drugIdentificationNumber: Scalars['String']['input'];
   genericName: Scalars['String']['input'];
   patientIds?: InputMaybe<Array<Scalars['Int']['input']>>;
   type: Scalars['String']['input'];
@@ -46,7 +46,7 @@ export type CreatePatientInput = {
   lastName: Scalars['String']['input'];
   medicationIds?: InputMaybe<Array<Scalars['Int']['input']>>;
   nextClinicVisit?: InputMaybe<Scalars['DateTime']['input']>;
-  phn: Scalars['Int']['input'];
+  phn: Scalars['String']['input'];
   primaryCondition?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   primaryDoctorId: Scalars['Int']['input'];
   province: Scalars['String']['input'];
@@ -61,7 +61,7 @@ export type Doctor = {
   firstName: Scalars['String']['output'];
   id: Scalars['Int']['output'];
   lastName: Scalars['String']['output'];
-  licenseNumber: Scalars['Int']['output'];
+  licenseNumber: Scalars['String']['output'];
   primaryPatients: Array<Patient>;
   specialty: Scalars['String']['output'];
 };
@@ -78,10 +78,10 @@ export type Medication = {
   brandName: Scalars['String']['output'];
   controlledSubstance: Scalars['Boolean']['output'];
   drugClass: Scalars['String']['output'];
-  drugIdentificationNumber: Scalars['Int']['output'];
+  drugIdentificationNumber: Scalars['String']['output'];
   genericName: Scalars['String']['output'];
   id: Scalars['Int']['output'];
-  patients?: Maybe<Array<Patient>>;
+  patients: Array<Patient>;
   type: Scalars['String']['output'];
 };
 
@@ -137,7 +137,7 @@ export type MutationUpdateDoctorArgs = {
 
 export type MutationUpdateMedicationArgs = {
   id: Scalars['Int']['input'];
-  input?: InputMaybe<UpdateMedicationInput>;
+  input: UpdateMedicationInput;
 };
 
 
@@ -149,7 +149,7 @@ export type MutationUpdatePatientArgs = {
 export type Patient = {
   __typename?: 'Patient';
   age: Scalars['Int']['output'];
-  allergies?: Maybe<Array<Scalars['String']['output']>>;
+  allergies: Array<Scalars['String']['output']>;
   birthday: Scalars['DateTime']['output'];
   city: Scalars['String']['output'];
   createdAt: Scalars['DateTime']['output'];
@@ -160,14 +160,14 @@ export type Patient = {
   id: Scalars['Int']['output'];
   lastClinicVisit?: Maybe<Scalars['DateTime']['output']>;
   lastName: Scalars['String']['output'];
-  medications?: Maybe<Array<Maybe<Medication>>>;
+  medications: Array<Medication>;
   nextClinicVisit?: Maybe<Scalars['DateTime']['output']>;
-  phn: Scalars['Int']['output'];
-  primaryCondition?: Maybe<Array<Scalars['String']['output']>>;
+  phn: Scalars['String']['output'];
+  primaryCondition: Array<Scalars['String']['output']>;
   primaryDoctor: Doctor;
   primaryDoctorId: Scalars['Int']['output'];
   province: Scalars['String']['output'];
-  secondaryCondition?: Maybe<Array<Scalars['String']['output']>>;
+  secondaryCondition: Array<Scalars['String']['output']>;
   updatedAt: Scalars['DateTime']['output'];
 };
 
@@ -176,7 +176,7 @@ export type Query = {
   doctor?: Maybe<Doctor>;
   doctors: Array<Doctor>;
   medication: Array<Medication>;
-  patient?: Maybe<Array<Maybe<Patient>>>;
+  patient: Array<Patient>;
   patients: Array<Patient>;
 };
 
@@ -184,7 +184,7 @@ export type Query = {
 export type QueryDoctorArgs = {
   firstName?: InputMaybe<Scalars['String']['input']>;
   lastName?: InputMaybe<Scalars['String']['input']>;
-  licenseNumber?: InputMaybe<Scalars['Int']['input']>;
+  licenseNumber?: InputMaybe<Scalars['String']['input']>;
   specialty?: InputMaybe<Scalars['String']['input']>;
 };
 
@@ -192,7 +192,7 @@ export type QueryDoctorArgs = {
 export type QueryMedicationArgs = {
   brandName?: InputMaybe<Scalars['String']['input']>;
   drugClass?: InputMaybe<Scalars['String']['input']>;
-  drugIdentificationNumber?: InputMaybe<Scalars['Int']['input']>;
+  drugIdentificationNumber?: InputMaybe<Scalars['String']['input']>;
   genericName?: InputMaybe<Scalars['String']['input']>;
   type?: InputMaybe<Scalars['String']['input']>;
 };
@@ -207,7 +207,7 @@ export type QueryPatientArgs = {
   gender?: InputMaybe<Gender>;
   lastName?: InputMaybe<Scalars['String']['input']>;
   medicationsName?: InputMaybe<Scalars['String']['input']>;
-  phn?: InputMaybe<Scalars['Int']['input']>;
+  phn?: InputMaybe<Scalars['String']['input']>;
   primaryCondition?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   primaryDoctorId?: InputMaybe<Scalars['Int']['input']>;
   province?: InputMaybe<Scalars['String']['input']>;
@@ -218,7 +218,7 @@ export type UpdateDoctorInput = {
   email?: InputMaybe<Scalars['String']['input']>;
   firstName?: InputMaybe<Scalars['String']['input']>;
   lastName?: InputMaybe<Scalars['String']['input']>;
-  licenseNumber?: InputMaybe<Scalars['Int']['input']>;
+  licenseNumber?: InputMaybe<Scalars['String']['input']>;
   specialty?: InputMaybe<Scalars['String']['input']>;
 };
 
@@ -226,7 +226,7 @@ export type UpdateMedicationInput = {
   brandName?: InputMaybe<Scalars['String']['input']>;
   controlledSubstance?: InputMaybe<Scalars['Boolean']['input']>;
   drugClass?: InputMaybe<Scalars['String']['input']>;
-  drugIdentificationNumber?: InputMaybe<Scalars['Int']['input']>;
+  drugIdentificationNumber?: InputMaybe<Scalars['String']['input']>;
   genericName?: InputMaybe<Scalars['String']['input']>;
   patientIds?: InputMaybe<Array<Scalars['Int']['input']>>;
   type?: InputMaybe<Scalars['String']['input']>;
@@ -244,7 +244,7 @@ export type UpdatePatientInput = {
   lastName?: InputMaybe<Scalars['String']['input']>;
   medicationIds?: InputMaybe<Array<Scalars['Int']['input']>>;
   nextClinicVisit?: InputMaybe<Scalars['DateTime']['input']>;
-  phn?: InputMaybe<Scalars['Int']['input']>;
+  phn?: InputMaybe<Scalars['String']['input']>;
   primaryCondition?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   primaryDoctorId?: InputMaybe<Scalars['Int']['input']>;
   province?: InputMaybe<Scalars['String']['input']>;
@@ -373,7 +373,7 @@ export type DoctorResolvers<ContextType = GraphQLContext, ParentType extends Res
   firstName?: Resolver<ResolversTypes['String'], ParentType, ContextType>;
   id?: Resolver<ResolversTypes['Int'], ParentType, ContextType>;
   lastName?: Resolver<ResolversTypes['String'], ParentType, ContextType>;
-  licenseNumber?: Resolver<ResolversTypes['Int'], ParentType, ContextType>;
+  licenseNumber?: Resolver<ResolversTypes['String'], ParentType, ContextType>;
   primaryPatients?: Resolver<Array<ResolversTypes['Patient']>, ParentType, ContextType>;
   specialty?: Resolver<ResolversTypes['String'], ParentType, ContextType>;
 }>;
@@ -382,10 +382,10 @@ export type MedicationResolvers<ContextType = GraphQLContext, ParentType extends
   brandName?: Resolver<ResolversTypes['String'], ParentType, ContextType>;
   controlledSubstance?: Resolver<ResolversTypes['Boolean'], ParentType, ContextType>;
   drugClass?: Resolver<ResolversTypes['String'], ParentType, ContextType>;
-  drugIdentificationNumber?: Resolver<ResolversTypes['Int'], ParentType, ContextType>;
+  drugIdentificationNumber?: Resolver<ResolversTypes['String'], ParentType, ContextType>;
   genericName?: Resolver<ResolversTypes['String'], ParentType, ContextType>;
   id?: Resolver<ResolversTypes['Int'], ParentType, ContextType>;
-  patients?: Resolver<Maybe<Array<ResolversTypes['Patient']>>, ParentType, ContextType>;
+  patients?: Resolver<Array<ResolversTypes['Patient']>, ParentType, ContextType>;
   type?: Resolver<ResolversTypes['String'], ParentType, ContextType>;
 }>;
 
@@ -397,13 +397,13 @@ export type MutationResolvers<ContextType = GraphQLContext, ParentType extends R
   deleteMedication?: Resolver<ResolversTypes['Boolean'], ParentType, ContextType, RequireFields<MutationDeleteMedicationArgs, 'id'>>;
   deletePatient?: Resolver<ResolversTypes['Boolean'], ParentType, ContextType, RequireFields<MutationDeletePatientArgs, 'id'>>;
   updateDoctor?: Resolver<ResolversTypes['Doctor'], ParentType, ContextType, RequireFields<MutationUpdateDoctorArgs, 'id' | 'input'>>;
-  updateMedication?: Resolver<ResolversTypes['Medication'], ParentType, ContextType, RequireFields<MutationUpdateMedicationArgs, 'id'>>;
+  updateMedication?: Resolver<ResolversTypes['Medication'], ParentType, ContextType, RequireFields<MutationUpdateMedicationArgs, 'id' | 'input'>>;
   updatePatient?: Resolver<ResolversTypes['Patient'], ParentType, ContextType, RequireFields<MutationUpdatePatientArgs, 'id' | 'input'>>;
 }>;
 
 export type PatientResolvers<ContextType = GraphQLContext, ParentType extends ResolversParentTypes['Patient'] = ResolversParentTypes['Patient']> = ResolversObject<{
   age?: Resolver<ResolversTypes['Int'], ParentType, ContextType>;
-  allergies?: Resolver<Maybe<Array<ResolversTypes['String']>>, ParentType, ContextType>;
+  allergies?: Resolver<Array<ResolversTypes['String']>, ParentType, ContextType>;
   birthday?: Resolver<ResolversTypes['DateTime'], ParentType, ContextType>;
   city?: Resolver<ResolversTypes['String'], ParentType, ContextType>;
   createdAt?: Resolver<ResolversTypes['DateTime'], ParentType, ContextType>;
@@ -414,14 +414,14 @@ export type PatientResolvers<ContextType = GraphQLContext, ParentType extends Re
   id?: Resolver<ResolversTypes['Int'], ParentType, ContextType>;
   lastClinicVisit?: Resolver<Maybe<ResolversTypes['DateTime']>, ParentType, ContextType>;
   lastName?: Resolver<ResolversTypes['String'], ParentType, ContextType>;
-  medications?: Resolver<Maybe<Array<Maybe<ResolversTypes['Medication']>>>, ParentType, ContextType>;
+  medications?: Resolver<Array<ResolversTypes['Medication']>, ParentType, ContextType>;
   nextClinicVisit?: Resolver<Maybe<ResolversTypes['DateTime']>, ParentType, ContextType>;
-  phn?: Resolver<ResolversTypes['Int'], ParentType, ContextType>;
-  primaryCondition?: Resolver<Maybe<Array<ResolversTypes['String']>>, ParentType, ContextType>;
+  phn?: Resolver<ResolversTypes['String'], ParentType, ContextType>;
+  primaryCondition?: Resolver<Array<ResolversTypes['String']>, ParentType, ContextType>;
   primaryDoctor?: Resolver<ResolversTypes['Doctor'], ParentType, ContextType>;
   primaryDoctorId?: Resolver<ResolversTypes['Int'], ParentType, ContextType>;
   province?: Resolver<ResolversTypes['String'], ParentType, ContextType>;
-  secondaryCondition?: Resolver<Maybe<Array<ResolversTypes['String']>>, ParentType, ContextType>;
+  secondaryCondition?: Resolver<Array<ResolversTypes['String']>, ParentType, ContextType>;
   updatedAt?: Resolver<ResolversTypes['DateTime'], ParentType, ContextType>;
 }>;
 
@@ -429,7 +429,7 @@ export type QueryResolvers<ContextType = GraphQLContext, ParentType extends Reso
   doctor?: Resolver<Maybe<ResolversTypes['Doctor']>, ParentType, ContextType, Partial<QueryDoctorArgs>>;
   doctors?: Resolver<Array<ResolversTypes['Doctor']>, ParentType, ContextType>;
   medication?: Resolver<Array<ResolversTypes['Medication']>, ParentType, ContextType, Partial<QueryMedicationArgs>>;
-  patient?: Resolver<Maybe<Array<Maybe<ResolversTypes['Patient']>>>, ParentType, ContextType, Partial<QueryPatientArgs>>;
+  patient?: Resolver<Array<ResolversTypes['Patient']>, ParentType, ContextType, Partial<QueryPatientArgs>>;
   patients?: Resolver<Array<ResolversTypes['Patient']>, ParentType, ContextType>;
 }>;
 

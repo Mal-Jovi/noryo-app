@@ -23,9 +23,9 @@ const config: CodegenConfig = {
         },
         // Clean Prisma mapping without 'as ...'
         mappers: {
-          Patient: "@prisma/client#Patient",
-          Doctor: "@prisma/client#Doctor",
-          Medication: "@prisma/client#Medication",
+          Patient: "../../generated/prisma#Patient",
+          Doctor: "../../generated/prisma#Doctor",
+          Medication: "../../generated/prisma#Medication",
         },
       },
     },

@@ -65,8 +65,8 @@ export const medicationResolvers: Pick<
               value === null ? undefined : value,
             ]),
           ),
-          // Update medication patients relation if patientIds is provided
-          ...(patientIds && patientIds.length > 0
+          // Update medication patients relation if patientIds is provided (including [] to clear)
+          ...(patientIds !== undefined && patientIds !== null
             ? { patients: { set: patientIds.map((id: number) => ({ id })) } }
             : {}),
         },
