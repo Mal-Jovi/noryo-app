@@ -1,4 +1,4 @@
-@reference "../app/globals.css";
+@reference "../../app/globals.css";
 
 .window-controls {
   @apply pointer-events-none flex items-center justify-end gap-1.5 px-3 py-2;

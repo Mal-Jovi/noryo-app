@@ -32,7 +32,7 @@ export default function RootLayout({
       <head>
         <link rel="stylesheet" href="https://use.typekit.net/dau4ouf.css" />
       </head>
-      <body className="card-container">
+      <body className="app-container">
         <div data-tauri-drag-region className="drag-bar">
           <WindowControls />
         </div>

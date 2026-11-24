@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from "react";
 import { getCurrentWindow } from "@tauri-apps/api/window";
-import "./WindowControls.css";
+import "./styles/WindowControls.css";
 
 export function WindowControls() {
   const [isWindows, setIsWindows] = useState(false);
