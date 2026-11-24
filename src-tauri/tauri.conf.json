@@ -15,7 +15,6 @@
         "title": "Noryo",
         "width": 960,
         "height": 540,
-        "decorations": false,
         "resizable": true,
         "fullscreen": false,
         "center": true,
