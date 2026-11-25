@@ -4,6 +4,7 @@ import type { ReactNode } from "react";
 import { usePathname } from "next/navigation";
 import { NavigationPane } from "@/components/NavigationPane";
 import { PagePane } from "@/components/PagePane";
+import { SettingsIcon } from "@/components/SettingsIcon";
 
 import "./dashboard.css";
 

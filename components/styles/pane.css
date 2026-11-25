@@ -57,18 +57,3 @@
 
   border-top-right-radius: 10px;
 }
-
-.dashboard-footer {
-  position: absolute;
-  padding-right: 1rem;
-  bottom: 0;
-  right: 0;
-
-  h5 {
-    font-family: "the-henston", sans-serif;
-    font-weight: 300;
-    font-style: normal;
-    font-size: 1rem;
-    opacity: 0.65;
-  }
-}

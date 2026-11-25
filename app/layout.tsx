@@ -4,6 +4,7 @@ import { Geist, Geist_Mono } from "next/font/google";
 import { WindowControls } from "../components/WindowControls";
 
 import "./globals.css";
+import { SettingsIcon } from "@/components/SettingsIcon";
 const geistSans = Geist({
   variable: "--font-geist-sans",
   subsets: ["latin"],
@@ -37,6 +38,7 @@ export default function RootLayout({
           <WindowControls />
         </div>
         <ApolloClientProvider>{children}</ApolloClientProvider>
+        <SettingsIcon />
       </body>
     </html>
   );
