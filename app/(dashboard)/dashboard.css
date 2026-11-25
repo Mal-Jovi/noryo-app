@@ -1,4 +1,9 @@
+.app-container:has(> .pageLayout) {
+  height: 100%;
+}
+
 .pageLayout {
+  --pane-gutter: 10px;
   position: relative;
   display: flex;
   flex-direction: row;
@@ -7,5 +12,21 @@
   min-height: 0;
   width: 100%;
   overflow: hidden;
-  padding-top: 10px;
+  padding: var(--pane-gutter) 0 0 var(--pane-gutter);
+}
+
+.pageLayout::before {
+  --shadow-corner-radius: 10px;
+  content: "";
+  position: absolute;
+  top: var(--pane-gutter);
+  left: var(--pane-gutter);
+  right: 0;
+  height: var(--shadow-corner-radius);
+  border-radius: var(--shadow-corner-radius) var(--shadow-corner-radius) 0 0;
+  box-shadow: 0 -5px 4px -4px rgb(225 194 42 / 50%);
+  clip-path: inset(
+    calc(-1 * var(--pane-gutter)) 0 0 calc(-1 * var(--pane-gutter))
+  );
+  pointer-events: none;
 }
