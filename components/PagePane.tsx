@@ -1,5 +1,5 @@
 import type { ReactNode } from "react";
-import "./styles/pane.css";
+import "./styles/Pane.css";
 import { SearchBar } from "./SearchBar";
 
 interface PagePaneProps {

@@ -3,7 +3,7 @@
 import { useState } from "react";
 import { SearchBar } from "./SearchBar";
 import { NavigationTab } from "./NavigationTab";
-import "./styles/pane.css";
+import "./styles/Pane.css";
 
 export const NavigationPane = () => {
   const [activeTab, setActiveTab] = useState("Doctors");

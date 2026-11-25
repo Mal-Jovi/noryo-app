@@ -1,4 +1,4 @@
-import "./styles/navigationTab.css";
+import "./styles/NavigationTab.css";
 import { usePathname } from "next/navigation";
 import Link from "next/link";
 
