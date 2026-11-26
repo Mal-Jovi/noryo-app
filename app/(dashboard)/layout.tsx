@@ -4,9 +4,9 @@ import type { ReactNode } from "react";
 import { usePathname } from "next/navigation";
 import { NavigationPane } from "@/components/NavigationPane";
 import { PagePane } from "@/components/PagePane";
-import { SettingsIcon } from "@/components/SettingsIcon";
 
 import "./dashboard.css";
+import "./patients/patients.css";
 
 export default function DashboardLayout({ children }: { children: ReactNode }) {
   const pathname = usePathname();

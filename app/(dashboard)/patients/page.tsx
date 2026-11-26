@@ -54,15 +54,61 @@ export default function PatientsPage() {
 
   const patients = data?.patients || [];
   return (
-    <div>
-      <ul>
-        {patients.map((patient) => (
-          <li key={patient.phn}>
-            {patient.firstName} {patient.lastName} {patient.age} {patient.city}{" "}
-            {patient.primaryDoctorId} {patient.primaryCondition}
-          </li>
-        ))}
-      </ul>
+    <div className="patient-table-wrap">
+      <table className="patient-table">
+        <thead className="patient-table-header">
+          <tr>
+            <th>Name</th>
+            <th>Age</th>
+            <th>Gender</th>
+            <th>Province</th>
+            <th className="city-cell-label">City</th>
+            <th>Conditions</th>
+            <th>Allergies</th>
+            <th>Medications</th>
+          </tr>
+        </thead>
+        <tbody>
+          {patients.map((patient) => (
+            <tr key={patient.phn}>
+              <td className="name-cell">
+                {patient.firstName} {patient.lastName}
+              </td>
+              <td>{patient.age}</td>
+              <td className="gender-cell">{patient.gender}</td>
+              <td>{patient.province}</td>
+              <td>{patient.city}</td>
+              <td className="tag-cell">
+                {[
+                  ...patient.primaryCondition,
+                  ...patient.secondaryCondition,
+                ].map((condition) => (
+                  <span key={condition} className="tag-basic">
+                    {condition}
+                  </span>
+                ))}
+              </td>
+              <td className="tag-cell">
+                {patient.allergies.map((allergy) => (
+                  <span key={allergy} className="tag-basic tag-warning">
+                    {allergy}
+                  </span>
+                ))}
+              </td>
+              <td className="tag-cell">
+                {patient.medications.map((medication) => (
+                  <span
+                    key={medication.id}
+                    className="tag-basic tag-medication"
+                  >
+                    {medication.genericName}
+                  </span>
+                ))}
+              </td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
     </div>
   );
 }
