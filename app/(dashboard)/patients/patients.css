@@ -31,6 +31,7 @@
   }
 
   td {
+    font-size: 0.75rem;
     padding: 0.55rem 1rem;
     border-bottom: 1px solid rgb(0 0 0 / 5%);
     white-space: nowrap;
@@ -54,6 +55,7 @@
   font-weight: 600;
   text-align: left;
   white-space: nowrap;
+  width: 1%;
 }
 
 .patient-table .city-cell-label {
@@ -63,18 +65,26 @@
 .patient-table td.gender-cell {
   white-space: normal;
   overflow-wrap: anywhere;
-  width: 1px;
+  width: 1%;
+}
+
+.patient-table td.province-cell {
+  width: 1%;
 }
 
 .patient-table .tag-cell {
   flex-wrap: wrap;
   gap: 4px;
   text-align: left;
+
+  &:has(> .tag-medication, > .tag-warning) {
+    text-align: center;
+  }
 }
 .patient-table .tag-basic {
   padding: 2px 8px; /* pill dimensions */
   border-radius: 999px; /* fully round for pill shape */
-  font-size: 0.75rem; /* to make smaller relative to the cell body font */
+  font-size: 0.65rem; /* to make smaller relative to the cell body font */
   background: rgb(0 0 0 / 6%); /* neutral gray */
 }
 

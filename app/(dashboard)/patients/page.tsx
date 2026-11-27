@@ -76,7 +76,7 @@ export default function PatientsPage() {
               </td>
               <td>{patient.age}</td>
               <td className="gender-cell">{patient.gender}</td>
-              <td>{patient.province}</td>
+              <td className="province-cell">{patient.province}</td>
               <td>{patient.city}</td>
               <td className="tag-cell">
                 {[
