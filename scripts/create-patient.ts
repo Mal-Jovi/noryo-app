@@ -1,13 +1,13 @@
 import "dotenv/config";
 import { prisma } from "../lib/prisma";
-import { Gender } from "@prisma/client";
+import { Gender } from "../lib/generated/prisma";
 
 async function main() {
   console.log("Inserting a new patient...");
 
   const patient = await prisma.patient.create({
     data: {
-      phn: 987654321, // Personal Health Number (must be unique)
+      phn: "987654321", // Personal Health Number (must be unique)
       firstName: "Jovi",
       lastName: "Sidhu",
       city: "Vancouver",

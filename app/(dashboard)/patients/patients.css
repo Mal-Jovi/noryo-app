@@ -1,0 +1,99 @@
+.patient-table-wrap {
+  width: 100%;
+  height: 100%;
+  overflow-y: auto;
+}
+
+.patient-table {
+  --patient-table-radius: 10px;
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
+  background: rgba(255, 255, 255, 0.6);
+  border-radius: var(--patient-table-radius);
+  overflow: hidden; /* clips content */
+  /*box-shadow: 0 1px 3px rgb(0 0 0 / 8%);*/
+  box-shadow: inset 4px 4px 3px -2px rgb(0 0 0 / 12%);
+
+  th {
+    position: sticky;
+    white-space: nowrap;
+    top: 0;
+    background: #fffdf2;
+    text-align: left;
+    padding: 0.6rem 1rem;
+    border-bottom: 1px solid rgb(0 0 0 / 8%);
+    box-shadow: inset 4px 4px 3px -2px rgb(0 0 0 / 12%);
+  }
+
+  thead th:first-child {
+    border-top-left-radius: 20px;
+  }
+
+  td {
+    font-size: 0.75rem;
+    padding: 0.55rem 1rem;
+    border-bottom: 1px solid rgb(0 0 0 / 5%);
+    white-space: nowrap;
+  }
+}
+
+.patient-table tbody tr:last-child td {
+  border-bottom: none;
+}
+
+/* row hover stylings */
+.patient-table tbody tr:hover td {
+  background: rgba(
+    200,
+    255,
+    189,
+    0.35
+  ); /* soft green of the patients tab color */
+}
+.patient-table .name-cell {
+  font-weight: 600;
+  text-align: left;
+  white-space: nowrap;
+  width: 1%;
+}
+
+.patient-table .city-cell-label {
+  text-align: center;
+}
+
+.patient-table td.gender-cell {
+  white-space: normal;
+  overflow-wrap: anywhere;
+  width: 1%;
+}
+
+.patient-table td.province-cell {
+  width: 1%;
+}
+
+.patient-table .tag-cell {
+  flex-wrap: wrap;
+  gap: 4px;
+  text-align: center;
+}
+.patient-table .tag-basic {
+  padding: 2px 8px; /* pill dimensions */
+  border-radius: 999px; /* fully round for pill shape */
+  font-size: 0.65rem; /* to make smaller relative to the cell body font */
+  background: rgb(0 0 0 / 6%); /* neutral gray */
+}
+
+.patient-table .tag-basic + .tag-basic {
+  margin-inline-start: 3px; /* adds a 3px gap between pills */
+}
+
+.patient-table .tag-medication {
+  background: #fef3c7; /* amber to match medications tab - TODO: refactor alongside color change to the medications tab */
+  color: #92400e;
+}
+
+.patient-table .tag-warning {
+  background: #ffe4e1; /* soft red */
+  color: #b3261e;
+}

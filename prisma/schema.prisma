@@ -9,7 +9,7 @@ datasource db {
 
 model Patient {
   id                 Int          @id @default(autoincrement())
-  phn                Int          @unique
+  phn                String       @unique
   firstName          String
   lastName           String
   city               String
@@ -30,8 +30,11 @@ model Patient {
   primaryDoctor      Doctor       @relation("PatientPrimaryDoctor", fields: [primaryDoctorId], references: [id])
   medications        Medication[] @relation("PatientMedications")
 
-  @@index([phn])
   @@index([lastClinicVisit])
+  @@index([nextClinicVisit])
+  @@index([province])
+  @@index([gender])
+  @@index([lastName, firstName])
   @@index([familyDoctorId], map: "Patient_familyDoctorId_fkey")
   @@index([primaryDoctorId], map: "Patient_primaryDoctorId_fkey")
 }
@@ -41,15 +44,18 @@ model Doctor {
   firstName       String
   lastName        String
   createdAt       DateTime  @default(now())
-  licenseNumber   Int       @unique
-  email           String
+  licenseNumber   String    @unique
+  email           String    @unique
   specialty       String
   familyPatients  Patient[] @relation("PatientFamilyDoctor")
   primaryPatients Patient[] @relation("PatientPrimaryDoctor")
+
+  @@index([specialty])
+  @@index([lastName])
 }
 
 model Medication {
-  drugIdentificationNumber Int       @unique
+  drugIdentificationNumber String    @unique
   genericName              String
   brandName                String
   type                     String
@@ -58,8 +64,7 @@ model Medication {
   id                       Int       @id @default(autoincrement())
   patients                 Patient[] @relation("PatientMedications")
 
-  @@index([drugIdentificationNumber])
-  @@index([genericName])
+  @@index([type])
   @@index([brandName])
   @@index([genericName, brandName])
 }

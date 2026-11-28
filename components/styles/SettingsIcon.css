@@ -1,0 +1,14 @@
+.settings-icon {
+  position: absolute;
+
+  width: 24px;
+  height: 24px;
+
+  bottom: 6px;
+  left: 5px;
+}
+
+.settings-icon img {
+  filter: brightness(0) invert(46%) sepia(96%) saturate(1100%) hue-rotate(24deg)
+    brightness(90%);
+}

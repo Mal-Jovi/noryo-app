@@ -11,7 +11,37 @@ export const patientResolvers: Pick<
     },
 
     patient: async (_parent, args, context) => {
-      const { phn, firstName, lastName, city } = args;
+      const {
+        phn,
+        firstName,
+        lastName,
+        city,
+        province,
+        gender,
+        birthday,
+        familyDoctorId,
+        primaryDoctorId,
+        allergies,
+        primaryCondition,
+        secondaryCondition,
+        medicationsName,
+      } = args;
+
+      const cleanAllergies = allergies?.filter((v): v is string => Boolean(v)) ?? [];
+      const cleanPrimary =
+        primaryCondition?.filter((v): v is string => Boolean(v)) ?? [];
+      const cleanSecondary =
+        secondaryCondition?.filter((v): v is string => Boolean(v)) ?? [];
+
+      const andFilters = [
+        ...cleanAllergies.map((item) => ({ allergies: { array_contains: item } })),
+        ...cleanPrimary.map((item) => ({
+          primaryCondition: { array_contains: item },
+        })),
+        ...cleanSecondary.map((item) => ({
+          secondaryCondition: { array_contains: item },
+        })),
+      ];
 
       return await context.prisma.patient.findMany({
         where: {
@@ -19,6 +49,22 @@ export const patientResolvers: Pick<
           firstName: firstName ? { contains: firstName } : undefined,
           lastName: lastName ? { contains: lastName } : undefined,
           city: city ? { contains: city } : undefined,
+          province: province ? { contains: province } : undefined,
+          gender: gender ?? undefined,
+          birthday: birthday ? new Date(birthday) : undefined,
+          familyDoctorId: familyDoctorId ?? undefined,
+          primaryDoctorId: primaryDoctorId ?? undefined,
+          medications: medicationsName
+            ? {
+                some: {
+                  OR: [
+                    { genericName: { contains: medicationsName } },
+                    { brandName: { contains: medicationsName } },
+                  ],
+                },
+              }
+            : undefined,
+          ...(andFilters.length > 0 ? { AND: andFilters } : {}),
         },
       });
     },
@@ -45,7 +91,11 @@ export const patientResolvers: Pick<
         ] as const;
 
         for (const field of requiredFields) {
-          if (!input[field]) {
+          if (
+            input[field] === undefined ||
+            input[field] === null ||
+            input[field] === ""
+          ) {
             throw new Error(`Missing required field: ${field}`);
           }
         }
@@ -181,14 +231,20 @@ export const patientResolvers: Pick<
           };
         }
 
-        // Step 5: Perform the update safely
+        // Step 5: Perform the update safely (preserve explicit null for nullable fields)
+        const nullableFields = new Set([
+          "familyDoctorId",
+          "lastClinicVisit",
+          "nextClinicVisit",
+        ]);
+
         return await context.prisma.patient.update({
           where: { id },
           data: {
             ...Object.fromEntries(
               Object.entries(patientData).map(([key, value]) => [
                 key,
-                value === null ? undefined : value, // prevents crashing on setting required fields to null
+                value === null && !nullableFields.has(key) ? undefined : value,
               ]),
             ),
             ...(cleanAllergies !== undefined && { allergies: cleanAllergies }),

@@ -6,6 +6,7 @@ import { NavigationPane } from "@/components/NavigationPane";
 import { PagePane } from "@/components/PagePane";
 
 import "./dashboard.css";
+import "./patients/patients.css";
 
 export default function DashboardLayout({ children }: { children: ReactNode }) {
   const pathname = usePathname();

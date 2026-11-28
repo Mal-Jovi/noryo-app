@@ -1,13 +1,9 @@
 "use client";
 
-import { useState } from "react";
-import { SearchBar } from "./SearchBar";
 import { NavigationTab } from "./NavigationTab";
-import "./styles/pane.css";
+import "./styles/Pane.css";
 
 export const NavigationPane = () => {
-  const [activeTab, setActiveTab] = useState("Doctors");
-
   const Tabs = [
     { label: "Doctors", href: "/doctors" },
     { label: "Patients", href: "/patients" },
@@ -20,13 +16,7 @@ export const NavigationPane = () => {
       <h1>Noryo</h1>
 
       {Tabs.map((tab) => (
-        <NavigationTab
-          key={tab.href}
-          label={tab.label}
-          href={tab.href}
-          isActive={activeTab === tab.label}
-          setActiveTab={setActiveTab}
-        />
+        <NavigationTab key={tab.href} label={tab.label} href={tab.href} />
       ))}
     </nav>
   );

@@ -1,0 +1,25 @@
+@reference "../../app/globals.css";
+
+.window-controls {
+  @apply pointer-events-none flex items-center justify-end gap-1.5 px-3 py-2;
+}
+
+.window-control-btn {
+  @apply pointer-events-auto flex h-5 w-5 items-center justify-center rounded-full text-neutral-700/80 transition-colors hover:bg-black/10 hover:text-neutral-900 active:scale-95;
+}
+
+.window-control-btn-close {
+  @apply hover:bg-red-500/85 hover:text-white;
+}
+
+.window-control-divider {
+  @apply h-3 w-px rounded-full bg-neutral-700/20;
+}
+
+.window-control-icon {
+  @apply h-3.5 w-3.5;
+}
+
+.window-control-icon-maximize {
+  @apply h-3 w-3;
+}
