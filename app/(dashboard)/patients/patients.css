@@ -75,11 +75,7 @@
 .patient-table .tag-cell {
   flex-wrap: wrap;
   gap: 4px;
-  text-align: left;
-
-  &:has(> .tag-medication, > .tag-warning) {
-    text-align: center;
-  }
+  text-align: center;
 }
 .patient-table .tag-basic {
   padding: 2px 8px; /* pill dimensions */
